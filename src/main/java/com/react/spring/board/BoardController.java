@@ -22,7 +22,7 @@ public class BoardController {
 	BoardDao boardDao;
 
 	@ResponseBody
-	@RequestMapping(value = "/sample-board.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/sample-board", method = RequestMethod.GET)
 	public List<BoardDto> selectBoard() {
 
 		System.out.println(">>> selectBoard()");
@@ -40,7 +40,6 @@ public class BoardController {
 		return boardDao.selectModal(board_no);
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "/sample-board", method = RequestMethod.POST)
 	public String updateModal(HttpServletRequest res, Model mv) {
 
@@ -56,7 +55,7 @@ public class BoardController {
 		
 		boardDao.updateModal(mv);
 		
-		return "/sample-board.do";
+		return "redirect:http://localhost:3000/sample-board/";
 	}
 
 }
