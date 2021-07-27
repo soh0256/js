@@ -1,11 +1,12 @@
 package com.react.spring.test;
 
+import java.util.List;
 
 public class HomeDto {
 
 	private String account_idx;
 	private String id;
-
+	
 	public String getAccount_idx(){
 
 		return account_idx;
@@ -29,5 +30,5 @@ public class HomeDto {
 		this.id=id;
 
 	}
-
+	
 }

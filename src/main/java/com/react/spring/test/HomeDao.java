@@ -16,5 +16,5 @@ public class HomeDao {
 		return sqlSession.selectList("sql.sel");
 
 	}
-
+	
 }

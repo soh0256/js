@@ -1,11 +1,10 @@
 package com.react.spring.test;
 
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,20 +15,12 @@ public class HomeController {
 	@Autowired
 	HomeDao homeDao;
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	@ResponseBody
+	@RequestMapping(value = "/sample-search/t", method = RequestMethod.GET)
+	public List<HomeDto> home() {
 
-	@RequestMapping(value = "/api/hello.do", method = RequestMethod.GET)
-	public String home(Model model) {
+		return homeDao.sel();
 
-		List<HomeDto> list = homeDao.sel();
-
-		for(int i=0; i<list.size(); i++){
-			logger.info(list.get(i).getAccount_idx());
-			logger.info(list.get(i).getId());
-			model.addAttribute("ID", list.get(0).getId() );
-		}
-
-		return "home";
 	}
 
 }
